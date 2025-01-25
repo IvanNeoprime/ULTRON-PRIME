@@ -1,2 +1,2 @@
 # ULTRON
- um progect open source para um assistente virtual
+ um project open source para um assistente virtual
