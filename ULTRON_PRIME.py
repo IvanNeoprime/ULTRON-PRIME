@@ -45,10 +45,12 @@ def takeCommand():
         return "None"
     return query
 
+
+#uso da camera a partir do openCV
 def Start():
     """iniciar camera"""
     speak("activando camera...")
-    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    face_cascade = cv2.CascadeClassifier (cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     cap = cv2.VideoCapture(0)
 
     while True:
@@ -89,11 +91,18 @@ if __name__ == "__main__":
         query = takeCommand().lower()
         # Abrir YouTube
         if 'abrir youtube' in query:
+            speak("abrindo Youtube")
             webbrowser.open('youtube.com')
 
         # Abrir Google
         elif 'abrir google' in query:
             webbrowser.open('google.com')
+
+        #temperatura
+        elif 'temperatura' in query:
+            webbrowser.open('https://mz.freemeteo.com/clima/maputo/7-dias/lista/?gid=1040652&language=portuguesebr&country=mozambique')
+
+                            
 
         # Informar as horas
         elif 'horas' in query:
