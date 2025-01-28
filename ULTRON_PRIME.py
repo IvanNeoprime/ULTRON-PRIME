@@ -28,6 +28,11 @@ def wishMe():
     speak("Eu sou o ULTRON, conhecedor dos mistérios do universo, e estou aqui para ajudá-lo na sua jornada de conquista universal.")
     speak("Aguardando as suas ordens, Mestre.")
 
+
+
+
+    
+
 def takeCommand():
     """Recebe comandos de voz do usuário e os retorna como texto."""
     r = sr.Recognizer()
@@ -44,6 +49,24 @@ def takeCommand():
         print("Repita, por favor, Mestre...")
         return "None"
     return query
+
+import wikipedia
+
+def searchWikipedia(query):
+    """Busca no Wikipedia e retorna os resultados."""
+    try:
+        wikipedia.set_lang("pt")  # Configura o idioma para português
+        result = wikipedia.summary(query, sentences=2)  # Resumo de duas frases
+        speak("Segundo as minhas fontes:")
+        print(result)
+        speak(result)  # O assistente fala a resposta do Wikipedia
+    except wikipedia.exceptions.DisambiguationError:
+        speak("Sua pesquisa retornou múltiplos resultados. Por favor, seja mais específico.")
+    except wikipedia.exceptions.PageError:
+        speak("Não encontrei informações relevantes.")
+    except Exception as e:
+        speak("Houve um erro ao processar a solicitação.")
+        print(e)
 
 
 #uso da camera a partir do openCV
@@ -99,15 +122,21 @@ if __name__ == "__main__":
             webbrowser.open('google.com')
 
         #temperatura
-        elif 'temperatura' in query:
+        elif 'tempo' in query:
             webbrowser.open('https://mz.freemeteo.com/clima/maputo/7-dias/lista/?gid=1040652&language=portuguesebr&country=mozambique')
 
-                            
+
+        #buscar infos da net wikipedia
+        elif 'pesquisar' in query:
+            speak("O que você deseja pesquisar mestre?")
+            search_query = takeCommand().lower()
+            if search_query != "None":
+                searchWikipedia(search_query)   
 
         # Informar as horas
         elif 'horas' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Mestre, agora são {strTime}.")
+            speak(f"Mestre, agora são {strTime} minutos.")
 
         # Enviar e-mail
         elif 'email para ....' in query:

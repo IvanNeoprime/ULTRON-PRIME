@@ -20,6 +20,7 @@ Certifique-se de que as seguintes dependências estão instaladas antes de execu
   - pyttsx3
   - speech_recognition
   - smtplib
+  -wikipedia-API
 
 Você pode instalar as dependências usando o comando:
 ```bash
@@ -30,11 +31,14 @@ Problemas actuais e eventuais
 Erros relacionados ao reconhecimento de voz podem ocorrer se o microfone não estiver configurado corretamente.
 A ativação da câmera requer permissões adequadas e hardware funcional.
 Certifique-se de usar credenciais de e-mail válidas e seguras.
+Lingua e sotaque estranho
 
 Melhorias Futuras
 Integração com APIs de terceiros para ampliar as funcionalidades.
 Adicionar suporte a mais idiomas para comandos de voz.
 Melhorar o algoritmo de reconhecimento facial.
+audio respostas
+
 
 Contribuições
 Sinta-se à vontade para contribuir com este projeto! Faça um fork, crie uma branch, implemente suas melhorias e envie um pull request.
